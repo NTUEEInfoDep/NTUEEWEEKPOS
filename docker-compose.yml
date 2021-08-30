@@ -1,0 +1,29 @@
+version: "2"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    hostname: tasty
+    ports:
+      - 8001:80
+    # volumes:
+    #   - ./config:/var/www/html/config
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOSTNAME=db
+      - DB_DATABASE=tastyigniter
+      - DB_USERNAME=tastyigniter
+      - DB_PASSWORD=somepassword
+    restart: always
+
+  db:
+    image: mariadb
+    # volumes:
+    #   - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=tastyigniter
+      - MYSQL_USER=tastyigniter
+      - MYSQL_PASSWORD=somepassword
+    restart: always
