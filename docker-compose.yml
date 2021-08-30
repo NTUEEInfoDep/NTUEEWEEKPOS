@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     hostname: tasty
-    ports:
-      - 8001:80
+    expose:
+      - "80"
     # volumes:
     #   - ./config:/var/www/html/config
     environment:
