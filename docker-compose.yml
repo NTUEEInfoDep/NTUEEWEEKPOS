@@ -1,6 +1,6 @@
 version: "2"
 services:
-  app:
+  weekpos:
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -16,14 +16,21 @@ services:
       - DB_USERNAME=tastyigniter
       - DB_PASSWORD=somepassword
     restart: always
+    networks:
+      - default
+      - bridge
 
   db:
     image: mariadb
-    # volumes:
-    #   - ./db:/var/lib/mysql
+    volumes:
+      - ./db:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=tastyigniter
       - MYSQL_USER=tastyigniter
       - MYSQL_PASSWORD=somepassword
     restart: always
+
+networks:
+  bridge:
+    driver: bridge
