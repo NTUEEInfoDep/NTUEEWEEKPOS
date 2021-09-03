@@ -11,6 +11,16 @@ Run with docker compose for automatic database configuration
     cd NTUEEWEEKPOS
     docker-compose up -d
 
+# Modify Components configuration
+
+go to the directory
+
+    cd /home/ntuee/production/NTUEEWEEKPOS
+
+go into container
+
+    docker exec -it ntueeweekpos_weekpos_1  bash
+
 ## Credits
 
 TastyIgniter(docker): https://github.com/ThisIsQasim/TastyIgniter
