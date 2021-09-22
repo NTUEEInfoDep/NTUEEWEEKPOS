@@ -1,0 +1,9 @@
+{
+  "name": "API_test",
+  "type": "F",
+  "discount": 10,
+  "redemptions": 0,
+  "customer_redemptions": 30,
+  "validity": "forever",
+  "status": 1
+}
