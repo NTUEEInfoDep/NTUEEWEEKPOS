@@ -21,7 +21,7 @@ class API:
             data = response.json()["data"]
             
             table = PrettyTable()
-            table.field_names = ["ID", "Name", "Code", "Discount", "Redemptions"]
+            table.field_names = ["ID", "Name", "Code", "Discount", "Redemptions", "Status", "Auto Apply"]
             
             for coupon in data:
                 ID = coupon["id"]
@@ -29,8 +29,10 @@ class API:
                 name = attributes["name"]
                 code = attributes["code"]
                 discount = attributes["discount"]
-                redemptions = attributes["redemptions"]                
-                table.add_row([ID, name, code, discount, redemptions])
+                redemptions = attributes["redemptions"]  
+                status = attributes["status"]
+                auto_apply = attributes["auto_apply"]
+                table.add_row([ID, name, code, discount, redemptions, status, auto_apply])
             print(table)
         elif response.status_code == 401:
             message = response.json()["message"]
@@ -56,12 +58,13 @@ class API:
             response = requests.post(self.url, headers=self.headers, params=payload)
             
             if response.status_code == 201:
-                print(response.json())
+                print("Request successful!")
+                print(response.json()["data"])
             else:
                 print(response.status_code)
                 print("Action Failed: %s" % response.json()["message"])
                 print("Error: %s" % response.json())
-
+            print("")
 def main():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
@@ -75,10 +78,8 @@ def main():
 
     if args.show:
         api.show_coupons()
-        print("show existing coupons")
     elif args.add:
         api.add_coupons(args.add)
-        print("add coupon with json file")
 
 if __name__ == "__main__":
     main()
