@@ -15,6 +15,8 @@ services:
       - DB_PASSWORD=somepassword
       - CACHE_DRIVER=redis
       - REDIS_HOST=redis
+    volumes:
+      - ./.env:/var/www/html/.env
     restart: always  
   db:
     image: mariadb:10.7

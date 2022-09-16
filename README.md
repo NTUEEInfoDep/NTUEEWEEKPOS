@@ -21,7 +21,13 @@ go into container
 
     docker exec -it ntueeweekpos_weekpos_1  bash
 
+in container
+
+    php artisan igniter:install --no-interaction
+    php artisan igniter:passwd admin
+
 ## Credits
 
 TastyIgniter(docker): https://github.com/ThisIsQasim/TastyIgniter
+
 TastyIgniter: https://github.com/tastyigniter/TastyIgniter

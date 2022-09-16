@@ -48,7 +48,7 @@ RUN set -ex; \
 	mv /usr/src/TastyIgniter-${TASTYIGNITER_VERSION} /usr/src/tastyigniter
 
 COPY .htaccess /usr/src/tastyigniter/
-COPY .env /var/www/html/
+# COPY .env /var/www/html/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     cd /usr/src/tastyigniter && composer install
